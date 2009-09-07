@@ -75,6 +75,10 @@ div.nav ul {
     padding-left: 2ex;
 }
 
+div.nav li {
+    margin-top: 10px;
+}
+
 #home #home-nav, #docs #docs-nav, #examples #examples-nav, #applets
 #applets-nav, #phones #phones-nav {
     background-color: #bbb;
