@@ -1,0 +1,3 @@
+[submodule "hecl"]
+	path = hecl
+	url = git://github.com/davidw/hecl.git
