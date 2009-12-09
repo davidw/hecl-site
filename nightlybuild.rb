@@ -47,9 +47,10 @@ end
 
 # Ok, let's bundle it all up.
 
-tarball = "downloads/hecl-#{Time.now.strftime("%d%m%y")}.tgz"
+tarball = "hecl-#{Time.now.strftime("%Y%m%d")}.tgz"
 
 system("tar czvf #{tarball} hecl/")
-FileUtils.ln_s(tarball, "downloads/hecl-latest.tgz")
+FileUtils.mv(tarball, "downloads/")
+FileUtils.ln_sf(tarball, "downloads/hecl-latest.tgz")
 
 exit(0)
