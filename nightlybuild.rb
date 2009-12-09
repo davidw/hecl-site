@@ -25,32 +25,31 @@ cmds = ["git pull origin master",
         "nice ant",
         "ant cleanBuild"]
 
-cmds.each do |c|
-  if !system(c)
-    STDERR.puts "Error running #{c}"
+FileUtils.cd("hecl") do
+  cmds.each do |c|
+    if !system(c)
+      STDERR.puts "Error running #{c}"
+      exit(1)
+    end
+  end
+
+  missing = false
+  requiredfiles.each do |f|
+    if !File.exists?(f)
+      STDERR.puts "Missing file: #{f}"
+      missing = true
+    end
+  end
+  if missing
     exit(1)
   end
 end
 
-missing = false
-requiredfiles.each do |f|
-  if !File.exists?(f)
-    STDERR.puts "Missing file: #{f}" 
-    missing = true
-  end
-end
-
-if missing
-  exit(1)
-end
-
 # Ok, let's bundle it all up.
 
-tarball = "hecl-#{Time.now.strftime("%d%m%y")}.tgz"
+tarball = "downloads/hecl-#{Time.now.strftime("%d%m%y")}.tgz"
 
-FileUtils.cd("..") do
-  system("tar czvf #{tarball} hecl/")
-  FileUtils.ln_s(tarball, "hecl-latest.tgz")
-end
+system("tar czvf #{tarball} hecl/")
+FileUtils.ln_s(tarball, "downloads/hecl-latest.tgz")
 
 exit(0)
