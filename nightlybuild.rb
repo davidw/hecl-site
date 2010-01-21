@@ -2,6 +2,8 @@
 
 require 'fileutils'
 
+FileUtils.cd(File.dirname(__FILE__))
+
 # These files must exist.
 requiredfiles =
   ["jars/AndroidBuilder.jar",
@@ -52,5 +54,17 @@ tarball = "hecl-#{Time.now.strftime("%Y%m%d")}.tgz"
 system("tar czvf #{tarball} hecl/")
 FileUtils.mv(tarball, "downloads/")
 FileUtils.ln_sf(tarball, "downloads/hecl-latest.tgz")
+
+# Clean up any old ones.
+
+FileUtils.cd("downloads") do
+  files = Dir.glob("hecl-*").sort
+  if files.length > 10
+    files[0..-10].each do |f|
+      puts "Deleting old file #{f}"
+      File.delete(f)
+    end
+  end
+end
 
 exit(0)
