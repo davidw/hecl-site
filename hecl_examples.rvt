@@ -181,5 +181,6 @@ set foo
     <pre><code></code></pre>
     <pre><code></code></pre>
 
+    <? include tracking.html ?>
   </body>
 </html>

@@ -146,5 +146,6 @@ while {< $i 10} {
 
     <br style="clear:both;" />
 
+    <? include tracking.html ?>
   </body>
 </html>

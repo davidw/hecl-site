@@ -110,5 +110,6 @@
 	Kechel</a>.  New contributors are more than welcome!
     </p>
 
+    <? include tracking.html ?>
   </body>
 </html>

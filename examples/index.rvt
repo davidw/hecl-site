@@ -142,5 +142,6 @@ set foo
 </code></pre>
       </div>
 
+    <? include tracking.html ?>
   </body>
 </html>
